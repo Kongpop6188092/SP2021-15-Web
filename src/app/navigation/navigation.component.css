@@ -1,0 +1,11 @@
+.title {
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.name {
+    font-size: large;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: #808080;
+}

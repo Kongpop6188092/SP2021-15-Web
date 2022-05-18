@@ -1,0 +1,36 @@
+.input-title {
+    font-size: large;
+    margin-bottom: 20px;
+}
+
+.not-found {
+    font-size: xx-large;
+    text-align: center;
+}
+
+.patient-name {
+    font-size: large;
+}
+
+.patient-prefix {
+    font-weight: bold;
+}
+
+.save-btn {
+    float: right;
+}
+
+.title {
+    font-size: xx-large;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.tooth-no {
+    width: 80px;
+}
+
+[nz-radio] {
+    display: block;
+    height: 32px;
+}

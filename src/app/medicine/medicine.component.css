@@ -1,0 +1,36 @@
+.allergic-input {
+    margin-bottom: 10px;
+}
+
+.input-amount {
+    display: block;
+    width: 100%;
+}
+
+.input-medicine {
+    width: 100%;
+}
+
+.not-found {
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.patient-name {
+    font-size: large;
+}
+
+.patient-prefix {
+    font-weight: bold;
+}
+
+.title {
+    font-size: xx-large;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.save-btn {
+    float: right;
+}

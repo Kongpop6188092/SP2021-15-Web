@@ -1,0 +1,17 @@
+<button nz-button nzType="primary" class="refresh-btn" (click)="refreshData()">Refresh</button>
+<nz-table #appointmentTable [nzData]="dataFilter">
+    <thead>
+        <tr>
+            <th>วันที่นัดหมาย</th>
+            <th>เวลานัดหมาย</th>
+            <th>ชื่อคนไข้</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of appointmentTable.data">
+            <td>{{ data.dateTime[0] }}</td>
+            <td>{{ data.dateTime[1] }}</td>
+            <td>{{ data.patient }}</td>
+        </tr>
+    </tbody>
+</nz-table>

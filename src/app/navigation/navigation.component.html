@@ -1,0 +1,14 @@
+<div nz-row nzJustify="center" class="title">MUDENT</div> 
+<div nz-row nzJustify="center" class="name" *ngIf="dentistName.length > 0">ทพ.{{ dentistName }}</div>
+<ul nz-menu nzMode="inline">
+    <li nz-menu-item [nzSelected]="appointmentPage">
+        <a routerLink="/appointment">นัดหมาย</a>
+    </li>
+    <li nz-menu-item [nzSelected]="treatmentPage">
+        <a routerLink="/treatment">ประวัติการรักษา</a>
+    </li>
+    <li nz-menu-item [nzSelected]="medicinePage">
+        <a routerLink="/medicine">รับยา</a>
+    </li>
+    <li nz-menu-item (click)="logout()">ออกจากระบบ</li>
+</ul>

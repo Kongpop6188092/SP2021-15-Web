@@ -1,0 +1,109 @@
+<div nz-row nzJustify="center">
+    <div nz-col class="title">
+        รับยา
+    </div>
+</div>
+
+<div nz-row nzJustify="center">
+    <div nz-col>
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixSearch">
+            <input nz-input [nzAutocomplete]="auto" [(ngModel)]="search" (ngModelChange)="onSearchChange($event)" />
+            <nz-autocomplete #auto>
+                <nz-auto-option 
+                    *ngFor="let patient of patientsFilter" 
+                    [nzValue]="patient.name">{{ patient.name }}</nz-auto-option>
+            </nz-autocomplete>
+        </nz-input-group>
+        <ng-template #suffixSearch>
+            <button nz-button nzType="primary" (click)="onSearch()">
+                <i nz-icon nzType="search"></i>
+            </button>
+        </ng-template>
+    </div>
+</div>
+
+<nz-divider></nz-divider>
+
+<div nz-row nzJustify="center" *ngIf="currentPatient">
+    <div nz-col class="patient-name">
+        <span class="patient-prefix">ผู้ป่วย:</span> {{ currentPatient.name }}
+    </div>
+</div>
+
+<nz-divider *ngIf="currentPatient"></nz-divider>
+
+<div nz-row nzJustify="center" [nzGutter]="[16,32]" *ngIf="currentPatient" class="allergic-input"> 
+    <div nz-col nzSpan="18">
+        <label>แพ้ยา</label>
+        <input nz-input [(ngModel)]="drugAllergy" />
+    </div>
+</div>
+
+<div *ngFor="let data of medicineList" nz-row nzJustify="center" [nzGutter]="[16,32]">
+    <div nz-col nzSpan="4" *ngIf="currentPatient">
+        <label>ชื่อยา</label>
+        <nz-select class="input-medicine" [(ngModel)]="data.medicine" (ngModelChange)="onSelectMed(data, $event)">
+            <nz-option *ngFor="let med of medicines" [nzValue]="med.ID" [nzLabel]="formatInteger(med.ID) + ' ' + med.NAME"></nz-option>
+        </nz-select>
+    </div>
+    <div nz-col nzSpan="2" *ngIf="currentPatient">
+        <label>จำนวน</label>
+        <nz-input-number class="input-amount" [nzPrecision]="0" nzPrecisionMode="cut" [(ngModel)]="data.amount"></nz-input-number>
+    </div>
+    <div nz-col nzSpan="12" *ngIf="currentPatient">
+        <label>รายละเอียด</label>
+        <input nz-input [(ngModel)]="data.detail" [disabled]="true" />
+    </div>
+</div>
+
+<div nz-row nzJustify="center" [nzGutter]="[16,32]"  *ngIf="currentPatient">
+    <div nz-col nzSpan="18">
+        <button nz-button nzType="primary" class="save-btn" (click)="onSaveData()">บันทึก</button>
+    </div>
+</div>
+
+<nz-divider *ngIf="currentPatient"></nz-divider>
+
+<div nz-row nzJustify="center" *ngIf="currentPatient">
+    <div nz-col class="patient-name">
+        <span class="patient-prefix">ประวัติการรักษา</span>
+    </div>
+</div>
+
+<nz-divider *ngIf="currentPatient"></nz-divider>
+
+<div nz-row nzJustify="center" *ngIf="currentPatient">
+    <div nz-col nzSpan="16">
+        <nz-table #patientTable [nzData]="medicineData" [nzShowPagination]="false">
+            <thead>
+                <th>ทันตแพทย์</th>
+                <th>ชื่อยา</th>
+                <th>จำนวน</th>
+                <th>วันที่จ่ายยา</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of patientTable.data">
+                    <td>{{ data.doctor }}</td>
+                    <td>{{ data.medicineName }}</td>
+                    <td>{{ data.amount }}</td>
+                    <td>{{ data.createdDate }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
+
+<div nz-row nzJustify="center" *ngIf="!currentPatient && isStart">
+    <div nz-col class="not-found" nzSpan="20">
+        ไม่พบผู้ป่วย
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
